@@ -18,7 +18,7 @@ def configure(conf):
 def build(bld):
 	staticlib = bld.new_task_gen(
 		features = 'cxx cprogram',
-		source   = 'main.cpp',
+		source   = 'main.cpp testingCore.cpp',
 		target   = 'stateTest',
 		)
 		

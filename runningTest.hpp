@@ -1,6 +1,9 @@
 #ifndef runningTest_h
 #define runningTest_h
 
+#pragma once 
+
+#include "serialiser.hpp"
 #include <cstdio>
 #include <vector>
 #include <map>
@@ -19,6 +22,14 @@ struct test{
 extern std::vector<test> resultStack;
 std::vector<test> resultStack(0);
 
+#define STORE_VALUE(Type, Variable)\
+    string s##Variable;\
+    s##Variable.append(#Type);\
+    s##Variable.append("_");\
+    s##Variable.append(#Variable);\
+    serialiser<Type> v##Variable;\
+    v##Variable.Serialise(Variable, s##Variable);\
+    
 #define STATE(newState)(g_state = #newState)
 #define ASSERT(VALUE_X, VALUE_Y) (VALUE_Y == VALUE_X)
 
